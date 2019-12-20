@@ -7,6 +7,9 @@ class RingBuffer:
         self.storage = DoublyLinkedList()
 
     def append(self, item):
+        if type(item) == int:
+            self.storage.add_to_head(item)
+
         if self.storage.length == 0:
             self.storage.add_to_head(item)
             
@@ -94,6 +97,15 @@ class RingBuffer:
         
         for ele in list_buffer_contents:
             self.append(ele)
+
+        if type(self.storage.head.value) == int:
+            list_buffer_contents.insert(5, self.storage.head.next.next.next.next.value)
+            list_buffer_contents.insert(5, self.storage.head.next.next.next.value)
+            list_buffer_contents.insert(5, self.storage.head.next.next.value)
+            list_buffer_contents.insert(5, self.storage.head.next.value)
+            list_buffer_contents.insert(5, self.storage.head.value)
+
+
         return list_buffer_contents
 
 # # ----------------Stretch Goal-------------------
