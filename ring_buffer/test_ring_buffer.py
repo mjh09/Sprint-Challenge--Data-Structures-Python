@@ -26,18 +26,18 @@ class RingBufferTests(unittest.TestCase):
         self.assertEqual(self.buffer.get(), ['f', 'b', 'c', 'd', 'e'])
 
         self.buffer.append('g')
-        # self.buffer.append('h')
-        # self.buffer.append('i')
-        # self.assertEqual(self.buffer.storage.length, 5)
+        self.buffer.append('h')
+        self.buffer.append('i')
+        self.assertEqual(self.buffer.storage.length, 5)
         self.assertEqual(self.buffer.get(), ['f', 'g', 'h', 'i', 'e'])
 
-        # self.buffer.append('j')
-        # self.buffer.append('k')
-        # self.assertEqual(self.buffer.get(), ['k', 'g', 'h', 'i', 'j'])
+        self.buffer.append('j')
+        self.buffer.append('k')
+        self.assertEqual(self.buffer.get(), ['k', 'g', 'h', 'i', 'j'])
 
-        # for i in range(50):
-        #     self.buffer_2.append(i)
-        # self.assertEqual(self.buffer_2.get(), [45, 46, 47, 48, 49])
+        for i in range(50):
+            self.buffer_2.append(i)
+        self.assertEqual(self.buffer_2.get(), [45, 46, 47, 48, 49])
 
 
 # class ArrayRingBufferTests(unittest.TestCase):

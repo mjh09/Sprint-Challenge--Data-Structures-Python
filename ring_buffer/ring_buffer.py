@@ -19,8 +19,65 @@ class RingBuffer:
             self.current = 1
         
         elif self.current == 1:
-            self.storage.delete(self.storage.tail.prev)
-            self.storage.tail.insert_before(item)
+            x = self.storage.tail.value
+
+            self.storage.delete(self.storage.tail)
+            self.storage.delete(self.storage.tail)
+            
+            self.storage.add_to_tail(item)
+            self.storage.add_to_tail(x)
+            self.current = 2
+
+
+        elif self.current == 2:
+            x = self.storage.tail.value
+            y = self.storage.tail.prev.value
+
+            self.storage.delete(self.storage.tail)
+            self.storage.delete(self.storage.tail)
+            self.storage.delete(self.storage.tail)
+
+            self.storage.add_to_tail(item)
+            self.storage.add_to_tail(y)
+            self.storage.add_to_tail(x)
+            self.current = 3
+
+        elif self.current == 3:
+            x = self.storage.tail.value
+            y = self.storage.tail.prev.value
+            z = self.storage.tail.prev.prev.value
+
+            self.storage.delete(self.storage.tail)
+            self.storage.delete(self.storage.tail)
+            self.storage.delete(self.storage.tail)
+            self.storage.delete(self.storage.tail)
+
+            self.storage.add_to_tail(item)
+            self.storage.add_to_tail(z)
+            self.storage.add_to_tail(y)
+            self.storage.add_to_tail(x)
+            self.current = 4
+
+        elif self.current == 4:
+            x = self.storage.tail.value
+            y = self.storage.tail.prev.value
+            z = self.storage.tail.prev.prev.value
+            a = self.storage.tail.prev.prev.prev.value
+
+            self.storage.delete(self.storage.tail)
+            self.storage.delete(self.storage.tail)
+            self.storage.delete(self.storage.tail)
+            self.storage.delete(self.storage.tail)
+            self.storage.delete(self.storage.tail)
+
+            self.storage.add_to_tail(item)
+            self.storage.add_to_tail(a)
+            self.storage.add_to_tail(z)
+            self.storage.add_to_tail(y)
+            self.storage.add_to_tail(x)
+            self.current = None
+        
+
 
 
 
