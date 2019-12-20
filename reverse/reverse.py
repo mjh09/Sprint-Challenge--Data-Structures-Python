@@ -1,3 +1,23 @@
+class Stack:
+    def __init__(self):
+        self.size = 0
+        # Why is our DLL a good choice to store our elements?
+        self.storage = LinkedList()
+
+    def push(self, value):
+        self.size+=1
+        self.storage.add_to_head(value)
+
+    def pop(self):
+      if self.size >0:
+        self.size-=1
+        #del self.storage.head
+        self.storage.head = self.storage.head.next_node
+
+    def len(self):
+        # return self.size
+        return self.storage.length
+
 class Node:
   def __init__(self, value=None, next_node=None):
     # the value at this linked list node
@@ -43,5 +63,14 @@ class LinkedList:
     return False
 
   def reverse_list(self):
-    # TO BE COMPLETED
-    pass
+    rll = Stack()
+    rrll =Stack()
+    while self.head is not None:
+        rll.push(self.head.value)
+        self.head = self.head.get_next()
+    while rll.size >=1:
+        rrll.push(rll.storage.head.value)
+        rll.pop()
+    while rrll.size>=1:
+        self.add_to_head(rrll.storage.head.value)
+        rrll.pop()
